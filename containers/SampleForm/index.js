@@ -13,8 +13,9 @@ const SampleForm = props => {
 
   return (
     <>
-      <View style={styles.mainContainer}>
-        <Text style={styles.heading}>Sample Form</Text>
+     <Sidebar />
+      {/* <View style={styles.mainContainer}> */}
+        {/* <Text style={styles.heading}>Sample Form</Text>
         <Field component={InputField} placeholder="Input 1" name="Input1" />
         <Field component={InputField} placeholder="Input 2" name="Input2" />
         <Field component={InputField} placeholder="Input 3" name="Input3" />
@@ -24,9 +25,9 @@ const SampleForm = props => {
             color="#00AA55"
             onPress={props.handleSubmit(onSubmit)}
           />
-        </View>
-        <Sidebar />
-      </View>
+        </View> */}
+      {/* </View> */}
+     
 
       <FolatingButton />
     </>
