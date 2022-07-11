@@ -8,7 +8,9 @@ import {StatusBar} from 'react-native';
 const App = () => {
   return (
     <Provider store={store}>
-      <SampleForm />
+      <PaperProvider>
+        <SampleForm />
+      </PaperProvider>
     </Provider>
   );
 };

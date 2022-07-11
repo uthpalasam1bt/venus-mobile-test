@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
-import {FAB, Portal, Provider} from 'react-native-paper';
+import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {Field, reduxForm} from 'redux-form';
 import InputField from '../../components/InputField';
+import FolatingButton from '../../components/FloatingButton';
+import Sidebar from '../../components/Sidebar';
 
 const SampleForm = props => {
   const onSubmit = values => {
@@ -10,14 +11,8 @@ const SampleForm = props => {
     props.reset();
   };
 
-  const [state, setState] = useState({open: false});
-
-  const onStateChange = ({open}) => setState({open});
-
-  const {open} = state;
-
   return (
-    <Provider>
+    <>
       <View style={styles.mainContainer}>
         <Text style={styles.heading}>Sample Form</Text>
         <Field component={InputField} placeholder="Input 1" name="Input1" />
@@ -30,52 +25,11 @@ const SampleForm = props => {
             onPress={props.handleSubmit(onSubmit)}
           />
         </View>
+        <Sidebar />
       </View>
 
-      <Portal>
-        <FAB.Group
-          fabStyle={{backgroundColor: '#00AA55'}}
-          color="white"
-          open={open}
-          icon={open ? 'close' : 'plus'}
-          actions={[
-            {
-              icon: 'content-save-outline',
-              label: 'Save',
-              onPress: () => console.log('Pressed Save'),
-              style: {backgroundColor: '#333B46'},
-              color: 'white',
-              labelStyle: {backgroundColor: '#333B46', borderRadius: 50},
-              labelTextColor: 'white',
-            },
-            {
-              icon: 'clipboard-edit-outline',
-              label: 'Request',
-              onPress: () => console.log('Pressed Request'),
-              style: {backgroundColor: '#333B46'},
-              color: 'white',
-              labelStyle: {backgroundColor: '#333B46', borderRadius: 50},
-              labelTextColor: 'white',
-            },
-            {
-              icon: 'folder-download-outline',
-              label: 'Download',
-              onPress: () => console.log('Pressed Download'),
-              style: {backgroundColor: '#333B46'},
-              color: 'white',
-              labelStyle: {backgroundColor: '#333B46', borderRadius: 50},
-              labelTextColor: 'white',
-            },
-          ]}
-          onStateChange={onStateChange}
-          onPress={() => {
-            if (open) {
-              // do something if the speed dial is open
-            }
-          }}
-        />
-      </Portal>
-    </Provider>
+      <FolatingButton />
+    </>
   );
 };
 
