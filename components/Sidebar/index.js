@@ -1,52 +1,87 @@
+import { NavigationContainer } from "@react-navigation/native";
+import {WhiteSpace,Steps, WingBlank } from '@ant-design/react-native'
 import React, { useRef, useState } from "react";
 import { Button, DrawerLayoutAndroid, Text, StyleSheet, View, ScrollView } from "react-native";
+import { createDrawerNavigator ,  DrawerContentScrollView } from '@react-navigation/drawer';
+import { Collapse, CollapseBody, CollapseHeader } from "../collapseMenu";
 
-const Sidebar = () => {
-  const drawer = useRef(null);
-  const [drawerPosition, setDrawerPosition] = useState("left");
-
-  const navigationView = () => (
-    <View style={[styles.container, styles.navigationContainer]}>
-     <ScrollView>
-     <Text>sdsdsd</Text>
-    <Text>sdsdsd</Text>
-
-    <Text>sdsdsd</Text>
-
-    <Text>sdsdsd</Text>
-
-    <Text>sdsdsd</Text>
-
-    <Text>sdsdsd</Text>
-     </ScrollView>
-  
-
-      <Button
-        title="Close drawer"
-        onPress={() => drawer.current.closeDrawer()}
-      />
+const Step=Steps.Step
+const Drawer = createDrawerNavigator()
+function Feed() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Feed Screen</Text>
     </View>
   );
+}
+
+function Article() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Article Screen</Text>
+    </View>
+  );
+}
+
+function CustomDrawerContent(props) {
+  const _renderView=()=>{
+    return (
+      <View>
+        <Text>wwew</Text>
+      </View>
+    )
+  }
+  const _renderCollapseView=()=>{
+    return (
+      <View>
+        <Steps>
+          <Step title="sd"/>
+        </Steps>
+      </View>
+    )
+  }
+  return (
+    <DrawerContentScrollView {...props}>
+      <View>
+      <Collapse>
+      <CollapseHeader>
+        <WingBlank bordered>
+          <Text>Workflow</Text>
+        </WingBlank>
+      </CollapseHeader>
+      <CollapseBody>
+        <Steps >
+          <Step title="ssd"></Step>
+        </Steps>
+       
+      </CollapseBody>
+    </Collapse>
+      </View>
+      
+    
+    </DrawerContentScrollView>
+  );
+}
+const Sidebar = () => {
+let drawer
+
+  const onOpenChange = (isOpen) => {
+    /* tslint:disable: no-console */
+    console.log('是否打开了 Drawer', isOpen.toString())
+  }
+
+  
+
 
   return (
     <>
-    
-       
-     
-    <DrawerLayoutAndroid
-      ref={drawer}
-      drawerWidth={300}
-      drawerPosition={drawerPosition}
-      renderNavigationView={navigationView}
+    <Drawer.Navigator useLegacyImplementation
+
+    drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <View  style={styles.drawer_button}>
-    <Button
-         
-          title=">"
-          onPress={() => drawer.current.openDrawer()}
-        />
-    </View>
-    </DrawerLayoutAndroid>
+      <Drawer.Screen  name="Feed" component={Feed} />
+      <Drawer.Screen name="Article" component={Article} />
+    </Drawer.Navigator>
     </>
   );
 };

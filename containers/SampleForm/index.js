@@ -4,6 +4,7 @@ import {Field, reduxForm} from 'redux-form';
 import InputField from '../../components/InputField';
 import FolatingButton from '../../components/FloatingButton';
 import Sidebar from '../../components/Sidebar';
+import { NavigationContainer } from '@react-navigation/native';
 
 const SampleForm = props => {
   const onSubmit = values => {
@@ -13,6 +14,7 @@ const SampleForm = props => {
 
   return (
     <>
+    <NavigationContainer>
      <Sidebar />
       {/* <View style={styles.mainContainer}> */}
         {/* <Text style={styles.heading}>Sample Form</Text>
@@ -30,6 +32,7 @@ const SampleForm = props => {
      
 
       <FolatingButton />
+      </NavigationContainer>
     </>
   );
 };

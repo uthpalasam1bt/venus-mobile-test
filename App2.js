@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {Provider} from 'react-redux';
 import store from './store';
 import SampleForm from './containers/SampleForm';
@@ -9,6 +10,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PaperProvider>
+      
         <SampleForm />
       </PaperProvider>
     </Provider>
