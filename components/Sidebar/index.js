@@ -8,7 +8,7 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import {Collapse, CollapseBody, CollapseHeader} from '../collapseMenu';
-import {Divider} from 'react-native-paper';
+
 
 const Step = Steps.Step;
 const Drawer = createDrawerNavigator();
@@ -29,10 +29,11 @@ function Article() {
 }
 
 function CustomDrawerContent(props) {
+  const {navigation}=props
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.closeDrawer}>
-        <MatIcon name="backburger" color="white" size={20} />
+        <MatIcon name="backburger" color="white" size={20} onPress={()=>{navigation.closeDrawer()}} />
       </View>
       <View style={styles.container}>
         <Collapse>
