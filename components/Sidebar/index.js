@@ -1,10 +1,7 @@
-import {NavigationContainer} from '@react-navigation/native';
 import {WhiteSpace, Steps, WingBlank} from '@ant-design/react-native';
 import React, {useRef, useState} from 'react';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
 import {
-  Button,
-  DrawerLayoutAndroid,
   Text,
   StyleSheet,
   View,
@@ -35,22 +32,7 @@ function Article() {
 }
 
 function CustomDrawerContent(props) {
-  const _renderView = () => {
-    return (
-      <View>
-        <Text>wwew</Text>
-      </View>
-    );
-  };
-  const _renderCollapseView = () => {
-    return (
-      <View>
-        <Steps>
-          <Step title="sd" />
-        </Steps>
-      </View>
-    );
-  };
+ 
   return (
     <DrawerContentScrollView {...props}>
       <View style={{margin: 20}}>
@@ -63,18 +45,20 @@ function CustomDrawerContent(props) {
             <View>
               <Steps>
                 <Step
+                  
                   renderIcon={({starting, waiting, error}) => (
                     <View style={styles.icon}>
                       <Icon name="check" color="white" />
                     </View>
                   )}
                   title={
-                    <View>
+                    <View >
                       <Text style={styles.steptext}>
                         Activate Classification
                       </Text>
                     </View>
                   }
+                  
                   status="finish"></Step>
 
                 <Step
@@ -142,12 +126,6 @@ function CustomDrawerContent(props) {
   );
 }
 const Sidebar = () => {
-  let drawer;
-
-  const onOpenChange = isOpen => {
-    /* tslint:disable: no-console */
-    console.log('是否打开了 Drawer', isOpen.toString());
-  };
 
   return (
     <>

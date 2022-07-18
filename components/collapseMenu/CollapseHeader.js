@@ -17,7 +17,7 @@ const CollapseHeader = React.forwardRef(
     },
     ref,
   ) => {
-    const opacity = show ? 0.5 : 1;
+    const opacity =  1;
     return (
       <View ref={ref} {...restProps} style={{paddingBottom: 20}}>
         <View style={[styles.arrow]}>
