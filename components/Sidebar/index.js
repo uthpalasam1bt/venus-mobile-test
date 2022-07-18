@@ -1,17 +1,14 @@
 import {WhiteSpace, Steps, WingBlank} from '@ant-design/react-native';
 import React, {useRef, useState} from 'react';
-import Icon from 'react-native-vector-icons/dist/AntDesign';
-import {
-  Text,
-  StyleSheet,
-  View,
-  ScrollView,
-} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
+import MatIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Text, StyleSheet, View, ScrollView} from 'react-native';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import {Collapse, CollapseBody, CollapseHeader} from '../collapseMenu';
+import {Divider} from 'react-native-paper';
 
 const Step = Steps.Step;
 const Drawer = createDrawerNavigator();
@@ -32,93 +29,87 @@ function Article() {
 }
 
 function CustomDrawerContent(props) {
- 
   return (
     <DrawerContentScrollView {...props}>
-      <View style={{margin: 20}}>
+      <View style={styles.closeDrawer}>
+        <MatIcon name="backburger" color="white" size={20} />
+      </View>
+      <View style={styles.container}>
         <Collapse>
           <CollapseHeader>
-            <Text style={{color: 'black', fontSize: 18}}>Master Workflow</Text>
+            <Text style={{color: 'black', fontSize: 14}}>Master Workflow</Text>
           </CollapseHeader>
 
           <CollapseBody>
-            <View>
-              <Steps>
-                <Step
-                  
-                  renderIcon={({starting, waiting, error}) => (
-                    <View style={styles.icon}>
-                      <Icon name="check" color="white" />
-                    </View>
-                  )}
-                  title={
-                    <View >
-                      <Text style={styles.steptext}>
-                        Activate Classification
-                      </Text>
-                    </View>
-                  }
-                  
-                  status="finish"></Step>
+            <View style={styles.divider} />
+            <Steps>
+              <Step
+                renderIcon={({starting, waiting, error}) => (
+                  <View style={styles.icon}>
+                    <Icon name="check" color="white" />
+                  </View>
+                )}
+                title={
+                  <View>
+                    <Text style={styles.steptext}>Activate Classification</Text>
+                  </View>
+                }
+                status="finish"
+              />
 
-                <Step
-                  renderIcon={({starting, waiting, error}) => (
-                    <View style={styles.icon}>
-                      <Icon name="check" color="white" />
-                    </View>
-                  )}
-                  title={
-                    <View>
-                      <Text style={styles.steptext}>
-                        Activate Classification
-                      </Text>
-                    </View>
-                  }
-                  status="finish"></Step>
-                <Step
-                  renderIcon={({starting, waiting, error}) => (
-                    <View style={styles.icon}>
-                      <Icon name="close" color="white" />
-                    </View>
-                  )}
-                  title={
-                    <View>
-                      <Text style={styles.steptext}>
-                        Activate Classification
-                      </Text>
-                    </View>
-                  }
-                  status="error"></Step>
-                <Step
-                  renderIcon={({starting, waiting, error}) => (
-                    <View style={styles.icon}>
-                      <Icon name="check" color="white" />
-                    </View>
-                  )}
-                  title={
-                    <View>
-                      <Text style={styles.steptext}>
-                        Activate Classification
-                      </Text>
-                    </View>
-                  }
-                  status="progress"></Step>
-                <Step
-                  renderIcon={({starting, waiting, error}) => (
-                    <View style={styles.icon}>
-                      <Icon name="check" color="white" />
-                    </View>
-                  )}
-                  title={
-                    <View>
-                      <Text style={styles.steptext}>
-                        Activate Classification
-                      </Text>
-                    </View>
-                  }
-                  status="wait"></Step>
-              </Steps>
-            </View>
+              <Step
+                renderIcon={({starting, waiting, error}) => (
+                  <View style={styles.icon}>
+                    <Icon name="check" color="white" />
+                  </View>
+                )}
+                title={
+                  <View>
+                    <Text style={styles.steptext}>Activate Classification</Text>
+                  </View>
+                }
+                status="finish"
+              />
+              <Step
+                renderIcon={({starting, waiting, error}) => (
+                  <View style={styles.icon}>
+                    <Icon name="close" color="white" />
+                  </View>
+                )}
+                title={
+                  <View>
+                    <Text style={styles.steptext}>Activate Classification</Text>
+                  </View>
+                }
+                status="error"
+              />
+              <Step
+                renderIcon={({starting, waiting, error}) => (
+                  <View style={styles.icon}>
+                    <Icon name="check" color="white" />
+                  </View>
+                )}
+                title={
+                  <View>
+                    <Text style={styles.steptext}>Activate Classification</Text>
+                  </View>
+                }
+                status="progress"
+              />
+              <Step
+                renderIcon={({starting, waiting, error}) => (
+                  <View style={styles.icon}>
+                    <Icon name="check" color="white" />
+                  </View>
+                )}
+                title={
+                  <View>
+                    <Text style={styles.steptext}>Activate Classification</Text>
+                  </View>
+                }
+                status="wait"
+              />
+            </Steps>
           </CollapseBody>
         </Collapse>
       </View>
@@ -126,7 +117,6 @@ function CustomDrawerContent(props) {
   );
 }
 const Sidebar = () => {
-
   return (
     <>
       <Drawer.Navigator
@@ -141,7 +131,8 @@ const Sidebar = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginTop: 60,
+    marginHorizontal: 20,
   },
   navigationContainer: {
     backgroundColor: '#ecf0f1',
@@ -167,6 +158,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  closeDrawer: {
+    backgroundColor: '#00AA55',
+    height: 40,
+    width: 59,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    borderBottomEndRadius: 5,
+  },
+  divider: {borderTopColor: '#9B9FA3', borderTopWidth: 1, marginBottom: 25},
 });
 
 export default Sidebar;

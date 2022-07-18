@@ -17,7 +17,7 @@ const CollapseHeader = React.forwardRef(
     },
     ref,
   ) => {
-    const opacity =  1;
+    const opacity = 1;
     return (
       <View ref={ref} {...restProps} style={{paddingBottom: 20}}>
         <View style={[styles.arrow]}>
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 10,
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
   },
