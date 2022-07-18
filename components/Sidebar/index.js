@@ -9,7 +9,6 @@ import {
 } from '@react-navigation/drawer';
 import {Collapse, CollapseBody, CollapseHeader} from '../collapseMenu';
 
-
 const Step = Steps.Step;
 const Drawer = createDrawerNavigator();
 function Feed() {
@@ -29,11 +28,18 @@ function Article() {
 }
 
 function CustomDrawerContent(props) {
-  const {navigation}=props
+  const {navigation} = props;
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.closeDrawer}>
-        <MatIcon name="backburger" color="white" size={20} onPress={()=>{navigation.closeDrawer()}} />
+        <MatIcon
+          name="backburger"
+          color="white"
+          size={20}
+          onPress={() => {
+            navigation.closeDrawer();
+          }}
+        />
       </View>
       <View style={styles.container}>
         <Collapse>
@@ -47,7 +53,7 @@ function CustomDrawerContent(props) {
               <Step
                 renderIcon={({starting, waiting, error}) => (
                   <View style={styles.icon}>
-                    <Icon name="check" color="white" />
+                    <Icon name="clockcircleo" color="white" />
                   </View>
                 )}
                 title={
@@ -55,13 +61,13 @@ function CustomDrawerContent(props) {
                     <Text style={styles.steptext}>Activate Classification</Text>
                   </View>
                 }
-                status="finish"
+                status="process"
               />
 
               <Step
                 renderIcon={({starting, waiting, error}) => (
                   <View style={styles.icon}>
-                    <Icon name="check" color="white" />
+                    <Icon name="clockcircleo" color="white" />
                   </View>
                 )}
                 title={
@@ -69,12 +75,12 @@ function CustomDrawerContent(props) {
                     <Text style={styles.steptext}>Activate Classification</Text>
                   </View>
                 }
-                status="finish"
+                status="process"
               />
               <Step
                 renderIcon={({starting, waiting, error}) => (
                   <View style={styles.icon}>
-                    <Icon name="close" color="white" />
+                    <Icon name="clockcircleo" color="white" />
                   </View>
                 )}
                 title={
@@ -82,12 +88,52 @@ function CustomDrawerContent(props) {
                     <Text style={styles.steptext}>Activate Classification</Text>
                   </View>
                 }
-                status="error"
+                status="process"
+              />
+            </Steps>
+          </CollapseBody>
+        </Collapse>
+        <Collapse>
+          <CollapseHeader>
+            <Text style={{color: 'black', fontSize: 14}}>
+              Registrarion Workflow
+            </Text>
+          </CollapseHeader>
+
+          <CollapseBody>
+            <View style={styles.divider} />
+            <Steps>
+              <Step
+                renderIcon={({starting, waiting, error}) => (
+                  <View style={styles.icon}>
+                    <Icon name="clockcircleo" color="white" />
+                  </View>
+                )}
+                title={
+                  <View>
+                    <Text style={styles.steptext}>Activate Classification</Text>
+                  </View>
+                }
+                status="process"
+              />
+
+              <Step
+                renderIcon={({starting, waiting, error}) => (
+                  <View style={styles.icon}>
+                    <Icon name="clockcircleo" color="white" />
+                  </View>
+                )}
+                title={
+                  <View>
+                    <Text style={styles.steptext}>Activate Classification</Text>
+                  </View>
+                }
+                status="process"
               />
               <Step
                 renderIcon={({starting, waiting, error}) => (
                   <View style={styles.icon}>
-                    <Icon name="check" color="white" />
+                    <Icon name="clockcircleo" color="white" />
                   </View>
                 )}
                 title={
@@ -95,20 +141,7 @@ function CustomDrawerContent(props) {
                     <Text style={styles.steptext}>Activate Classification</Text>
                   </View>
                 }
-                status="progress"
-              />
-              <Step
-                renderIcon={({starting, waiting, error}) => (
-                  <View style={styles.icon}>
-                    <Icon name="check" color="white" />
-                  </View>
-                )}
-                title={
-                  <View>
-                    <Text style={styles.steptext}>Activate Classification</Text>
-                  </View>
-                }
-                status="wait"
+                status="process"
               />
             </Steps>
           </CollapseBody>
@@ -151,13 +184,14 @@ const styles = StyleSheet.create({
     paddingTop: 60,
   },
   steptext: {
-    fontSize: 15,
+    fontSize: 13,
     color: 'black',
   },
   icon: {
-    justifyContent: 'center',
+    backgroundColor: '#FFD400',
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   closeDrawer: {
     backgroundColor: '#00AA55',
@@ -168,7 +202,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderBottomEndRadius: 5,
   },
-  divider: {borderTopColor: '#9B9FA3', borderTopWidth: 1, marginBottom: 25},
+  divider: {
+    borderBottomColor: '#9B9FA3',
+    borderBottomWidth: 0.5,
+    marginBottom: 25,
+  },
 });
 
 export default Sidebar;
