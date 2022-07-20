@@ -1,8 +1,10 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React, {useState} from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import Home from './screens/home';
 import Schemes from './screens/schemes';
@@ -12,11 +14,13 @@ import Reports from './screens/reports';
 import Multiclient from './screens/multiclient';
 import Notifications from './screens/notifications';
 import MyProfile from './screens/myprofile';
-
-import {FloatingAction} from 'react-native-floating-action';
+import SchemeInfomation from './screens/scheme/schemeInfomation';
+import SchemeUpdates from './screens/scheme/schemeUpdates';
+import SchemeUserManagement from './screens/scheme/schemeUserManagement';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const MainDrawer = () => {
   return (
@@ -32,6 +36,34 @@ const MainDrawer = () => {
   );
 };
 
+const SchemeTabs = () => {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="schemeInfomation"
+        component={SchemeInfomation}
+        options={{
+          tabBarIcon: () => <Icon name="layout" color="#2BABE2" size={20} />,
+        }}
+      />
+      <Tab.Screen
+        name="schemeUpdates"
+        component={SchemeUpdates}
+        options={{
+          tabBarIcon: () => <Icon name="team" color="#2BABE2" size={20} />,
+        }}
+      />
+      <Tab.Screen
+        name="schemeUserManagement"
+        component={SchemeUserManagement}
+        options={{
+          tabBarIcon: () => <Icon name="idcard" color="#2BABE2" size={20} />,
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
 const App = () => {
   return (
     <NavigationContainer>
@@ -43,7 +75,13 @@ const App = () => {
             headerShown: false,
           }}
         />
-        <Stack.Screen name="scheme" component={Scheme} />
+        <Stack.Screen
+          name="scheme"
+          component={SchemeTabs}
+          options={{
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
